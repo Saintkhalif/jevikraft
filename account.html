@@ -1,0 +1,62 @@
+<!-- account.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account | Jevikraft LTD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .account-container { max-width: 1000px; margin: 48px auto; padding: 0 20px; display: grid; grid-template-columns: 220px 1fr; gap: 40px; }
+  .account-sidebar a { display: block; padding: 12px 0; border-bottom: 1px solid var(--light-gray); font-size: 14px; }
+  .order-history-item { border: 1px solid var(--light-gray); padding: 16px; margin-bottom: 16px; }
+  @media (max-width: 700px) { .account-container { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="ticker"><div class="ticker-track"><span>✦ Your Downloads</span><span>✦ Order History</span></div></div>
+
+<nav><a href="index.html" class="nav-logo">JEVIKRAFT LTD</a><ul class="nav-links"><li><a href="shop.html">Shop</a></li><li><a href="custom-plan.html">Custom Plan</a></li></ul><div class="nav-icons"><a href="#">🔍</a><a href="account.html">👤</a><a href="cart.html" class="cart-btn">🛒 Cart (0)</a></div></nav>
+
+<div class="account-container">
+  <div class="account-sidebar">
+    <h4>My Account</h4>
+    <a href="#">Dashboard</a>
+    <a href="#">Orders & Downloads</a>
+    <a href="#">Profile Settings</a>
+    <a href="#" id="logout-demo">Logout (Demo)</a>
+  </div>
+  <div class="account-content">
+    <h2 class="section-title" style="margin-bottom: 8px;">Order History</h2>
+    <p class="section-sub">Download your purchased plans instantly.</p>
+    <div id="order-history-list">
+      <!-- Demo orders (simulated) -->
+      <div class="order-history-item">
+        <div><strong>Order #JEV-1001</strong> – March 10, 2025</div>
+        <div>Two-story 4 Bedroom House – ID 24411</div>
+        <div>Status: <span style="color:green;">Completed</span> | <a href="#" style="color:var(--accent);">Download PDF</a></div>
+      </div>
+      <div class="order-history-item">
+        <div><strong>Order #JEV-0982</strong> – February 22, 2025</div>
+        <div>Contemporary 3 Bedroom House – ID 13418</div>
+        <div>Status: <span style="color:green;">Completed</span> | <a href="#" style="color:var(--accent);">Download PDF</a></div>
+      </div>
+      <p style="font-size:13px; margin-top:16px;">*Demo data – connect to backend for real order sync.</p>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-bottom"><span>© 2025 JEVIKRAFT LTD</span></div></footer>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('logout-demo')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('Demo logout. In production, clear session and redirect.');
+    window.location.href = 'index.html';
+  });
+</script>
+</body>
+</html>

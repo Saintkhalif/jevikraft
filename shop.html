@@ -1,0 +1,55 @@
+<!-- shop.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop All House Plans | Jevikraft LTD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="ticker"><div class="ticker-track"><span>✦ Instant Digital Delivery</span><span>✦ 100% Money-Back Guarantee</span><span>✦ 5,000+ Dream Homes Delivered</span><span>✦ New Plans Added Weekly</span><span>✦ Custom Plans Available</span><span>✦ Instant Digital Delivery</span></div></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">JEVIKRAFT LTD</a>
+  <ul class="nav-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="shop.html">Best Sellers</a></li>
+    <li class="has-dropdown"><a href="#">By Size ▾</a><div class="dropdown"><a href="shop.html">Under 100 SQM</a><a href="shop.html">100–200 SQM</a><a href="shop.html">200–300 SQM</a><a href="shop.html">300–400 SQM</a><a href="shop.html">400–500 SQM</a><a href="shop.html">500–750 SQM</a><a href="shop.html">750+ SQM</a></div></li>
+    <li class="has-dropdown"><a href="#">By Style ▾</a><div class="dropdown"><a href="shop.html">Modern House Plans</a><a href="shop.html">Contemporary Plans</a><a href="shop.html">Bungalow Plans</a><a href="shop.html">Luxury Plans</a><a href="shop.html">Rustic Plans</a><a href="shop.html">Country Plans</a></div></li>
+    <li class="has-dropdown"><a href="#">By Budget ▾</a><div class="dropdown"><a href="shop.html">Under $100</a><a href="shop.html">$100–$300</a><a href="shop.html">$300–$500</a><a href="shop.html">$500–$700</a><a href="shop.html">$700+</a></div></li>
+    <li><a href="custom-plan.html">Custom Plan</a></li>
+    <li class="has-dropdown"><a href="#">Learn ▾</a><div class="dropdown"><a href="cost-calculator.html">Building Cost Calculator</a><a href="design-ideas.html">Design Ideas Blog</a></div></li>
+  </ul>
+  <div class="nav-icons"><a href="#">🔍</a><a href="#">👤</a><a href="#" class="cart-btn">🛒 Cart (0)</a></div>
+</nav>
+
+<div class="filters-section">
+  <div class="filter-group"><label>Bedrooms:</label><select id="bedroom-filter"><option value="all">All</option><option value="1">1 Bedroom</option><option value="2">2 Bedrooms</option><option value="3">3 Bedrooms</option><option value="4">4 Bedrooms</option><option value="5">5+ Bedrooms</option></select></div>
+  <div class="filter-group"><label>Budget (USD):</label><select id="budget-filter"><option value="all">All</option><option value="under100">Under $100</option><option value="100-300">$100 – $300</option><option value="300-500">$300 – $500</option><option value="500-700">$500 – $700</option><option value="700plus">$700+</option></select></div>
+  <button id="clear-filters" class="clear-filters">Clear all filters</button>
+</div>
+
+<section style="padding-top: 40px;">
+  <div class="plans-header"><div><h2 class="section-title">All House Plans</h2><p class="section-sub">Browse our complete collection of ready-made designs</p></div></div>
+  <div class="plans-grid" id="plans-grid">
+    <!-- Cards will have data attributes for filtering -->
+    <div class="plan-card" data-bedrooms="4" data-price="351.00"><div class="plan-img"><img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80"/><div class="badge">Best Seller</div></div><div class="plan-info"><div class="plan-title">Two-story 4 Bedroom House – ID 24411</div><div class="plan-price">From $351.00</div><div class="plan-specs"><div class="spec"><span class="spec-icon">🏢</span> 2 Floors</div><div class="spec"><span class="spec-icon">🛏️</span> 4 Beds</div><div class="spec"><span class="spec-icon">🚿</span> 4 Baths</div><div class="spec"><span class="spec-icon">📐</span> 300 m²</div></div><a href="product-detail.html?id=24411" style="margin-top:12px; display:inline-block; font-size:12px; font-weight:600;">View Details →</a></div></div>
+    <div class="plan-card" data-bedrooms="3" data-price="236.34"><div class="plan-img"><img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80"/><div class="badge">Best Seller</div></div><div class="plan-info"><div class="plan-title">Contemporary 3 Bedroom House – ID 13418</div><div class="plan-price">From $236.34</div><div class="plan-specs"><div class="spec"><span class="spec-icon">🏠</span> 1 Floor</div><div class="spec"><span class="spec-icon">🛏️</span> 3 Beds</div><div class="spec"><span class="spec-icon">🚿</span> 4 Baths</div><div class="spec"><span class="spec-icon">📐</span> 202 m²</div></div><a href="product-detail.html?id=13418" style="margin-top:12px; display:inline-block; font-size:12px; font-weight:600;">View Details →</a></div></div>
+    <div class="plan-card" data-bedrooms="8" data-price="2549.56"><div class="plan-img"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80"/><div class="badge">Luxury</div></div><div class="plan-info"><div class="plan-title">8 Bedroom Modern Contemporary Mansion – ID 38901</div><div class="plan-price">From $2,549.56</div><div class="plan-specs"><div class="spec"><span class="spec-icon">🏢</span> 3 Floors</div><div class="spec"><span class="spec-icon">🛏️</span> 8 Beds</div><div class="spec"><span class="spec-icon">🚿</span> 10 Baths</div><div class="spec"><span class="spec-icon">📐</span> 1,068 m²</div></div><a href="product-detail.html?id=38901" style="margin-top:12px; display:inline-block; font-size:12px; font-weight:600;">View Details →</a></div></div>
+    <div class="plan-card" data-bedrooms="4" data-price="524.16"><div class="plan-img"><img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80"/><div class="badge">Trending</div></div><div class="plan-info"><div class="plan-title">Flat Roof 4 Bedroom Mansion – ID 24512</div><div class="plan-price">From $524.16</div><div class="plan-specs"><div class="spec"><span class="spec-icon">🏢</span> 2 Floors</div><div class="spec"><span class="spec-icon">🛏️</span> 4 Beds</div><div class="spec"><span class="spec-icon">🚿</span> 5 Baths</div><div class="spec"><span class="spec-icon">📐</span> 448 m²</div></div><a href="product-detail.html?id=24512" style="margin-top:12px; display:inline-block; font-size:12px; font-weight:600;">View Details →</a></div></div>
+    <div class="plan-card" data-bedrooms="2" data-price="189.00"><div class="plan-img"><img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=600&q=80"/></div><div class="plan-info"><div class="plan-title">Cozy 2 Bedroom Bungalow – ID 10112</div><div class="plan-price">From $189.00</div><div class="plan-specs"><div class="spec"><span class="spec-icon">🏠</span> 1 Floor</div><div class="spec"><span class="spec-icon">🛏️</span> 2 Beds</div><div class="spec"><span class="spec-icon">🚿</span> 2 Baths</div><div class="spec"><span class="spec-icon">📐</span> 110 m²</div></div><a href="product-detail.html?id=10112" style="margin-top:12px; display:inline-block; font-size:12px; font-weight:600;">View Details →</a></div></div>
+    <div class="plan-card" data-bedrooms="5" data-price="899.00"><div class="plan-img"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80"/><div class="badge">New</div></div><div class="plan-info"><div class="plan-title">Modern 5 Bedroom Family Home – ID 77002</div><div class="plan-price">From $899.00</div><div class="plan-specs"><div class="spec"><span class="spec-icon">🏢</span> 2 Floors</div><div class="spec"><span class="spec-icon">🛏️</span> 5 Beds</div><div class="spec"><span class="spec-icon">🚿</span> 6 Baths</div><div class="spec"><span class="spec-icon">📐</span> 520 m²</div></div><a href="product-detail.html?id=77002" style="margin-top:12px; display:inline-block; font-size:12px; font-weight:600;">View Details →</a></div></div>
+  </div>
+</section>
+
+<footer><div class="footer-grid"><div class="footer-brand"><span class="nav-logo">JEVIKRAFT LTD</span><p>Ready-made and custom house floor plans designed by professional architects.</p></div><div class="footer-col"><h4>Shop</h4><a href="shop.html">All Plans</a><a href="custom-plan.html">Custom Plan</a></div><div class="footer-col"><h4>Learn</h4><a href="cost-calculator.html">Building Cost</a><a href="design-ideas.html">Design Ideas</a></div></div><div class="footer-bottom"><span>© 2025 JEVIKRAFT. All rights reserved.</span></div></footer>
+
+<div class="cookie" id="cookie"><p>We use cookies to enhance your experience.</p><div class="cookie-btns"><button class="btn-decline">Decline</button><button class="btn-accept">Accept</button></div></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

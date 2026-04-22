@@ -1,0 +1,123 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping Cart | Jevikraft LTD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .cart-container { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+  .cart-item { display: flex; gap: 20px; border-bottom: 1px solid var(--light-gray); padding: 20px 0; align-items: center; flex-wrap: wrap; }
+  .cart-item-img { width: 100px; height: 80px; object-fit: cover; }
+  .cart-item-details { flex: 2; min-width: 150px; }
+  .cart-item-price { width: 100px; font-weight: 600; }
+  .cart-item-quantity { width: 120px; display: flex; align-items: center; gap: 8px; }
+  .cart-item-quantity input { width: 60px; padding: 6px; }
+  .cart-item-total { width: 100px; font-weight: 700; color: var(--accent); }
+  .cart-item-remove { background: none; border: none; cursor: pointer; font-size: 20px; color: #999; }
+  .cart-summary { background: var(--sand); padding: 24px; margin-top: 32px; text-align: right; }
+  .cart-summary p { font-size: 18px; margin-bottom: 16px; }
+  .cart-summary span { font-weight: 700; color: var(--accent); font-size: 24px; }
+  .empty-cart { text-align: center; padding: 80px 20px; }
+  .btn-secondary { background: var(--black); color: white; padding: 12px 28px; border: none; font-weight: 600; cursor: pointer; margin-left: 12px; }
+</style>
+</head>
+<body>
+
+<div class="ticker"><div class="ticker-track"><span>✦ Instant Digital Delivery</span><span>✦ Secure Checkout</span></div></div>
+
+<nav><a href="index.html" class="nav-logo">JEVIKRAFT LTD</a><ul class="nav-links"><li><a href="shop.html">Shop</a></li><li><a href="custom-plan.html">Custom Plan</a></li></ul><div class="nav-icons"><a href="#">🔍</a><a href="#">👤</a><a href="cart.html" class="cart-btn">🛒 Cart (0)</a></div></nav>
+
+<div class="cart-container" id="cart-container">
+  <h2 class="section-title">Your Cart</h2>
+  <div id="cart-items-list"></div>
+  <div id="cart-summary" class="cart-summary" style="display: none;"></div>
+  <div id="empty-cart-msg" class="empty-cart" style="display: none;">
+    <p>Your cart is empty.</p>
+    <a href="shop.html" class="btn-primary" style="margin-top: 20px; display: inline-block;">Browse Plans</a>
+  </div>
+</div>
+
+<footer><div class="footer-bottom"><span>© 2025 JEVIKRAFT LTD</span></div></footer>
+<script src="js/main.js"></script>
+<script>
+  function renderCart() {
+    const cart = getCart();
+    const container = document.getElementById('cart-items-list');
+    const summaryDiv = document.getElementById('cart-summary');
+    const emptyDiv = document.getElementById('empty-cart-msg');
+    if (!cart.length) {
+      container.innerHTML = '';
+      summaryDiv.style.display = 'none';
+      emptyDiv.style.display = 'block';
+      return;
+    }
+    emptyDiv.style.display = 'none';
+    summaryDiv.style.display = 'block';
+    let itemsHtml = '';
+    let total = 0;
+    cart.forEach((item, idx) => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+      itemsHtml += `
+        <div class="cart-item" data-idx="${idx}">
+          <img class="cart-item-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=100&q=80" alt="${item.name}">
+          <div class="cart-item-details"><strong>${item.name}</strong><br><small>ID: ${item.id}</small></div>
+          <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+          <div class="cart-item-quantity">
+            <button class="qty-minus" data-idx="${idx}">-</button>
+            <input type="number" value="${item.quantity}" min="1" data-idx="${idx}" class="cart-qty-input">
+            <button class="qty-plus" data-idx="${idx}">+</button>
+          </div>
+          <div class="cart-item-total">$${itemTotal.toFixed(2)}</div>
+          <button class="cart-item-remove" data-idx="${idx}">✕</button>
+        </div>
+      `;
+    });
+    container.innerHTML = itemsHtml;
+    summaryDiv.innerHTML = `<p>Subtotal: <span>$${total.toFixed(2)} USD</span></p><p>Taxes & shipping calculated at checkout</p><a href="checkout.html" class="btn-primary">Proceed to Checkout</a> <a href="shop.html" class="btn-secondary">Continue Shopping</a>`;
+
+    // attach events
+    document.querySelectorAll('.qty-minus').forEach(btn => {
+      btn.addEventListener('click', (e) => { changeQuantity(parseInt(btn.dataset.idx), -1); });
+    });
+    document.querySelectorAll('.qty-plus').forEach(btn => {
+      btn.addEventListener('click', (e) => { changeQuantity(parseInt(btn.dataset.idx), 1); });
+    });
+    document.querySelectorAll('.cart-qty-input').forEach(input => {
+      input.addEventListener('change', (e) => { setQuantity(parseInt(input.dataset.idx), parseInt(input.value)); });
+    });
+    document.querySelectorAll('.cart-item-remove').forEach(btn => {
+      btn.addEventListener('click', (e) => { removeItem(parseInt(btn.dataset.idx)); });
+    });
+  }
+
+  function changeQuantity(idx, delta) {
+    const cart = getCart();
+    if (cart[idx]) {
+      cart[idx].quantity = Math.max(1, cart[idx].quantity + delta);
+      saveCart(cart);
+      renderCart();
+    }
+  }
+  function setQuantity(idx, qty) {
+    const cart = getCart();
+    if (cart[idx] && qty >= 1) {
+      cart[idx].quantity = qty;
+      saveCart(cart);
+      renderCart();
+    }
+  }
+  function removeItem(idx) {
+    const cart = getCart();
+    cart.splice(idx, 1);
+    saveCart(cart);
+    renderCart();
+  }
+  document.addEventListener('DOMContentLoaded', renderCart);
+</script>
+</body>
+</html>

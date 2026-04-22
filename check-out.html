@@ -1,0 +1,93 @@
+<!-- checkout.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | Jevikraft LTD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .checkout-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; max-width: 1100px; margin: 48px auto; padding: 0 20px; }
+  .order-summary { background: var(--sand); padding: 28px; border-radius: 0; }
+  .order-item { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; }
+  .checkout-form input, .checkout-form select, .checkout-form textarea { width: 100%; padding: 12px; margin-bottom: 16px; border: 1px solid var(--light-gray); }
+  .checkout-form label { font-size: 13px; font-weight: 600; display: block; margin-bottom: 4px; }
+  .row-2cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 800px) { .checkout-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="ticker"><div class="ticker-track"><span>✦ Secure Payment</span><span>✦ Instant Delivery</span></div></div>
+
+<nav><a href="index.html" class="nav-logo">JEVIKRAFT LTD</a><ul class="nav-links"><li><a href="shop.html">Shop</a></li></ul><div class="nav-icons"><a href="cart.html" class="cart-btn">🛒 Cart</a></div></nav>
+
+<div class="checkout-grid">
+  <div class="checkout-form">
+    <h2 class="section-title" style="font-size: 28px;">Shipping Details</h2>
+    <form id="checkout-form">
+      <div class="row-2cols">
+        <div><label>First Name</label><input type="text" required></div>
+        <div><label>Last Name</label><input type="text" required></div>
+      </div>
+      <label>Email Address</label><input type="email" required>
+      <label>Phone Number</label><input type="tel" required>
+      <label>Address Line 1</label><input type="text" required>
+      <label>Address Line 2 (optional)</label><input type="text">
+      <div class="row-2cols">
+        <div><label>City</label><input required></div>
+        <div><label>Postal Code</label><input required></div>
+      </div>
+      <div class="row-2cols">
+        <div><label>Country</label><select><option>United States</option><option>Canada</option><option>United Kingdom</option><option>Australia</option><option>Other</option></select></div>
+        <div><label>Payment Method</label><select><option>Credit Card (demo)</option><option>PayPal (demo)</option></select></div>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;">Place Order (Demo)</button>
+      <p style="font-size: 12px; margin-top: 16px;">*This is a frontend demo. No real payment is processed.</p>
+    </form>
+  </div>
+  <div class="order-summary">
+    <h3>Order Summary</h3>
+    <div id="checkout-items"></div>
+    <hr style="margin: 16px 0;">
+    <div class="order-item"><strong>Total</strong><strong id="checkout-total">$0.00</strong></div>
+    <p style="font-size: 12px; margin-top: 16px;">All plans are delivered digitally. You will receive download links after payment.</p>
+  </div>
+</div>
+
+<footer><div class="footer-bottom"><span>© 2025 JEVIKRAFT LTD</span></div></footer>
+<script src="js/main.js"></script>
+<script>
+  function displayCheckoutCart() {
+    const cart = getCart();
+    const container = document.getElementById('checkout-items');
+    const totalSpan = document.getElementById('checkout-total');
+    if (!cart.length) {
+      container.innerHTML = '<p>Your cart is empty. <a href="shop.html">Go to shop</a></p>';
+      totalSpan.innerText = '$0.00';
+      return;
+    }
+    let itemsHtml = '';
+    let total = 0;
+    cart.forEach(item => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+      itemsHtml += `<div class="order-item"><span>${item.name} x${item.quantity}</span><span>$${itemTotal.toFixed(2)}</span></div>`;
+    });
+    container.innerHTML = itemsHtml;
+    totalSpan.innerText = `$${total.toFixed(2)}`;
+  }
+
+  document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Demo order placed! In a real backend, this would process payment and send confirmation.');
+    sessionStorage.removeItem('jevikraft_cart');
+    window.location.href = 'index.html';
+  });
+
+  document.addEventListener('DOMContentLoaded', displayCheckoutCart);
+</script>
+</body>
+</html>
